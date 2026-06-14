@@ -1,41 +1,41 @@
 # Boilerplate NestJS
 
-Boilerplate project menggunakan [NestJS](https://nestjs.com/) framework yang sudah dikonfigurasi dengan berbagai fitur siap pakai untuk mempercepat development backend API.
+A ready-to-use [NestJS](https://nestjs.com/) boilerplate project pre-configured with essential features to accelerate backend API development.
 
 ## Tech Stack
 
-- **NestJS 11** — Framework Node.js untuk membangun server-side application
-- **TypeScript** — Static typing untuk JavaScript
-- **Winston** — Logging library dengan file & console transport
+- **NestJS 11** — Node.js framework for building server-side applications
+- **TypeScript** — Static typing for JavaScript
+- **Winston** — Logging library with file & console transports
 - **Swagger (OpenAPI)** — Auto-generated API documentation
 - **class-validator & class-transformer** — Request DTO validation
 - **Jest** — Unit & E2E testing framework
 - **ESLint + Prettier** — Code linting & formatting
 
-## Fitur yang Sudah Tersedia
+## Features
 
 ### 1. Global API Prefix & URI Versioning
-Semua route otomatis menggunakan prefix `/api` dan mendukung URI versioning (`/api/v1/...`).
+All routes automatically use the `/api` prefix and support URI versioning (`/api/v1/...`).
 
 ### 2. Swagger API Documentation
-Dokumentasi API otomatis tersedia di `/api/docs` dengan dukungan API Key authentication (`x-client-id`, `x-client-secret`).
+Auto-generated API docs available at `/api/docs` with API Key authentication support (`x-client-id`, `x-client-secret`).
 
 ### 3. Global Validation Pipe
-- Whitelist mode — property yang tidak ada di DTO akan otomatis dibuang
-- `forbidNonWhitelisted` — request ditolak jika ada property tidak dikenal
-- Auto-transform — request body otomatis di-transform sesuai tipe DTO
-- Custom error response format untuk validation error
+- Whitelist mode — properties not defined in the DTO are automatically stripped
+- `forbidNonWhitelisted` — requests are rejected if unknown properties are present
+- Auto-transform — request body is automatically transformed to match DTO types
+- Custom error response format for validation errors
 
 ### 4. Structured Logging (Winston)
-- Console transport dengan format timestamp & colorize
-- File transport: `logs/error.log` (error only) dan `logs/combined.log` (semua level)
-- Format JSON untuk file log agar mudah di-parse
+- Console transport with timestamp & colorize format
+- File transport: `logs/error.log` (error only) and `logs/combined.log` (all levels)
+- JSON format for file logs for easy parsing
 
 ### 5. HTTP Logging Interceptor
-Setiap request otomatis di-log dengan format: `[status] METHOD /path - duration ms`
+Every request is automatically logged with format: `[status] METHOD /path - duration ms`
 
 ### 6. Global HTTP Exception Filter
-Response error yang konsisten dengan format:
+Consistent error response format:
 ```json
 {
   "success": false,
@@ -45,7 +45,7 @@ Response error yang konsisten dengan format:
 ```
 
 ### 7. Modular Structure
-Struktur folder yang terorganisir:
+Organized folder structure:
 ```
 src/
 ├── common/
@@ -54,19 +54,19 @@ src/
 │   └── utils/        # Utility functions
 ├── logger/           # Winston & interceptor config
 ├── modules/
-│   └── example/      # Contoh module CRUD lengkap (controller, service, dto, entity)
+│   └── example/      # Example CRUD module (controller, service, dto, entity)
 ├── app.module.ts
 └── main.ts
 ```
 
 ### 8. Example CRUD Module
-Module `example` sebagai referensi pembuatan module baru dengan:
-- Controller dengan full CRUD endpoints
-- DTO dengan validasi (`class-validator`)
+An `example` module as a reference for creating new modules with:
+- Controller with full CRUD endpoints
+- DTO with validation (`class-validator`)
 - Service layer
 - Unit test boilerplate
 
-## Cara Penggunaan
+## Usage
 
 ### Prerequisites
 - Node.js >= 18
@@ -77,7 +77,7 @@ Module `example` sebagai referensi pembuatan module baru dengan:
 pnpm install
 ```
 
-### Menjalankan Aplikasi
+### Running the Application
 ```bash
 # development (watch mode)
 pnpm run start:dev
@@ -87,10 +87,10 @@ pnpm run build
 pnpm run start:prod
 ```
 
-### Akses Swagger
-Setelah server berjalan, buka: http://localhost:3000/api/docs
+### Access Swagger
+After the server is running, open: http://localhost:3000/api/docs
 
-### Menjalankan Test
+### Running Tests
 ```bash
 # unit tests
 pnpm run test
@@ -108,20 +108,20 @@ pnpm run lint
 pnpm run format
 ```
 
-## Membuat Module Baru
+## Creating a New Module
 
-Gunakan NestJS CLI untuk generate module baru:
+Use the NestJS CLI to generate a new module:
 ```bash
-npx nest g resource modules/nama-module
+npx nest g resource modules/module-name
 ```
 
-Module baru akan otomatis ter-generate dengan controller, service, dto, dan entity.
+This will auto-generate a module with controller, service, dto, and entity.
 
 ## Environment Variables
 
-| Variable | Default | Keterangan |
-|----------|---------|------------|
-| `PORT`   | `3000`  | Port server |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT`   | `3000`  | Server port |
 
 ## License
 
